@@ -12,17 +12,18 @@ $app->setBasePath("/api-rest/public");
 
 require_once('../src/config/conexion.php');
 
-$app->get('/', function (Request $request, Response $response, $args) {
-    $response->getBody()->write("Hello world!");
-    return $response;
-});
+
+
+/* Rutas de peticiones */
 
 $app->get('/productos', function (Request $request, Response $response) {
     $sql = "SELECT id,category,discount,name,price,url_image FROM product";
     try {
         $db = new db();
         $db = $db->conexionDB();
+        /* Ejecutar la QUERY */
         $resultado = $db->query($sql);
+        /* Cuenta la cantidad de filas, en caso de haber mayor a 0, hará un fetch y retornará un objeto json */
         if ($resultado->rowCount() > 0) {
             $vehiculos = $resultado->fetchAll(PDO::FETCH_OBJ);
 
@@ -59,6 +60,9 @@ $app->get('/categorias', function (Request $request, Response $response) {
         echo '{"error":{"text":' . $e . '}';
     }
 });
+
+
+/* Ruta de peticion GET para traer los productos de dicha categorias, entregando por paràmetro, el id de categoria */
 
 $app->get('/filtradoCategorias/{idCategoria}', function (Request $request, Response $response, array $args) {
     $idCategoria =  $args['idCategoria'];
