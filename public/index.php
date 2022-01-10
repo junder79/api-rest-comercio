@@ -17,7 +17,7 @@ $app->get('/', function (Request $request, Response $response, $args) {
 });
 
 $app->get('/productos', function (Request $request, Response $response) {
-    $sql = "SELECT id,category,discount,price,url_image FROM product";
+    $sql = "SELECT id,category,discount,name,price,url_image FROM product";
     try {
         $db = new db();
         $db = $db->conexionDB();
@@ -61,7 +61,7 @@ $app->get('/productos', function (Request $request, Response $response) {
 
   $app->get('/filtradoCategorias/{idCategoria}', function (Request $request, Response $response,array $args) {
     $idCategoria =  $args['idCategoria'];
-    $sql = "SELECT id,category,discount,price,url_image FROM product WHERE category = $idCategoria";
+    $sql = "SELECT id,category,discount,name,price,url_image FROM product WHERE category = $idCategoria";
     try {
         $db = new db();
         $db = $db->conexionDB();
@@ -83,7 +83,7 @@ $app->get('/productos', function (Request $request, Response $response) {
 
   $app->get('/buscar/{busqueda}', function (Request $request, Response $response,array $args) {
     $busqueda =  $args['busqueda'];
-    $sql = "SELECT id,category,discount,price,url_image FROM product WHERE name LIKE '%$busqueda%'";
+    $sql = "SELECT id,category,discount,name,price,url_image FROM product WHERE name LIKE '%$busqueda%'";
     try {
         $db = new db();
         $db = $db->conexionDB();
