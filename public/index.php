@@ -98,7 +98,7 @@ $app->get('/buscar/{busqueda}', function (Request $request, Response $response, 
 
             $response->getBody()->write(json_encode($vehiculos));
         } else {
-            $response->getBody()->write(json_encode("No hay data"));
+            $response->getBody()->write(json_encode(""));
         }
 
 
