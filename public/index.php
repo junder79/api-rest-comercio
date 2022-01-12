@@ -7,7 +7,7 @@ use Slim\Factory\AppFactory;
 require __DIR__ . '/../vendor/autoload.php';
 
 $app = AppFactory::create();
-$app->setBasePath("/api-rest/public");
+$app->setBasePath("/public");
 
 
 require_once('../src/config/conexion.php');
