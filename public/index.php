@@ -58,7 +58,10 @@ $app->get('/categorias', function (Request $request, Response $response) {
         }
 
 
-        return $response;
+        return $response
+            ->withHeader('Access-Control-Allow-Origin', 'http://mysite')
+            ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
+            ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     } catch (PDOException $e) {
         echo '{"error":{"text":' . $e . '}';
     }
@@ -83,7 +86,10 @@ $app->get('/filtradoCategorias/{idCategoria}', function (Request $request, Respo
         }
 
 
-        return $response;
+        return $response
+            ->withHeader('Access-Control-Allow-Origin', 'http://mysite')
+            ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
+            ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     } catch (PDOException $e) {
         echo '{"error":{"text":' . $e . '}';
     }
@@ -105,7 +111,10 @@ $app->get('/buscar/{busqueda}', function (Request $request, Response $response, 
         }
 
 
-        return $response;
+        return $response
+            ->withHeader('Access-Control-Allow-Origin', 'http://mysite')
+            ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
+            ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     } catch (PDOException $e) {
         echo '{"error":{"text":' . $e . '}';
     }
